@@ -68,8 +68,9 @@ This could be handled in a more automated way in a pipeline environment using pi
     - AWS TGW needs the IP of the AZ VNET Gateway
     - AZ VNET Gateway needs the IP of the TGW public VPN
     - See deploy instructions for details
+    - BGP settings were added to the Azure networking module VNET and local gateways
 - IP subnet ranges were selected for expandability and to ensure enough IP space; without knowing the requirements of the application, it's difficult to estimate what this requirement could be so went with the middle-path 
-- There are no route tables, SGs, or NACLs configured.  As I was running short on time I did not include these, but a proper solution should include these.
+- There are no route tables, SGs, or NACLs configured.  As I was running short on time, I did not include these, but a proper solution should include these.
 
 ## Deploying
 - 
@@ -77,8 +78,8 @@ This could be handled in a more automated way in a pipeline environment using pi
 - Run `terraform plan -var-file=prod.tfvars -out "initial.plan" `
 - Verify the plan output
 - Run `terraform apply initial.plan`
-- Wait for configurations to complete--AZ VNET gateway creation can take a long time
-- When both are complete, change `use_bpg_placeholder` to `false` in prod.tfvars
+- Wait for apply to complete--AZ VNET gateway creation can take a long time
+- When both are complete, change `use_bpg_placeholder` to `false` in `prod.tfvars`
 - Run `terraform plan -var-file=prod.tfvars -out "update.plan" `
 - Verify the plan output
 - Run `terraform apply update.plan`
