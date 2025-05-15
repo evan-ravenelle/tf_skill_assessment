@@ -8,7 +8,7 @@ variable "tgw_shared_secret_name" {
     description = "Name of the secret to retrieve as the shared key for IPSec cnxn."
 }
 
-variable "use_bgp_placeholder" {
+variable "use_ip_placeholder" {
     default = false
 }
 
